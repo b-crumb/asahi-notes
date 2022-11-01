@@ -224,8 +224,11 @@ UUID=[SHORT ESP UUID HERE eg XXXX-XXXX] /boot/efi vfat rw,relatime,fmask=0022,dm
 /swapfile none swap defaults 0 0
 ```
 
-    - With most of this stuff you should be able to set up a bootable asahi install. Note that, you will essentially first configure (some) of these files for your install, after which you should regenerate your initramfs - vmlinuz not - and only then build the m1n1 bin similarly to above build script. _boot.bin_, again, is the entrypoint.
-    - After all of this is done, you want to probably connect to the internet with networkmanager, `pacman -Syyu` to get all of the latest packages and see if anything breaks, create a new user with a home directory with the /etc/skel files offered by asahi
-    - You might also want to continue on following the asahi-alarm-builder scripts for plasma which set up a desktop environment - read them through and execute them
-        * note that you probably do not need scripts such as calamares, especially if they don't work first boot for you as they didn't for me, it is just a configuration script
-        * wayland has been working for me better than x11 - don't go too high yet with dpi in kde config since we still need gpu accel support
+
+
+7. continuing
+	- With most of this stuff you should be able to set up a bootable asahi install. Note that, you will essentially first configure (some) of these files for your install, after which you should regenerate your initramfs - vmlinuz not - and only then build the m1n1 bin similarly to above build script. _boot.bin_, again, is the entrypoint.
+	- After all of this is done, you want to probably connect to the internet with networkmanager, `pacman -Syyu` to get all of the latest packages and see if anything breaks, create a new user with a home directory with the /etc/skel files offered by asahi
+	- You might also want to continue on following the asahi-alarm-builder scripts for plasma which set up a desktop environment - read them through and execute them
+		* note that you probably do not need scripts such as calamares, especially if they don't work first boot for you as they didn't for me, it is just a configuration script
+		* wayland has been working for me better than x11 - don't go too high yet with dpi in kde config since we still need gpu accel support
