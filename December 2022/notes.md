@@ -62,9 +62,11 @@ I suppose a clean install could be made using only m1n1 (virtualize) but from my
 
 So 2 explanations going forward on topic of which files to use to actually create your asahi distro by copying them into the above created parts.
 
-    * The following step has worked for my install, meaning it is the safe way to go. The following step is essentially building the images from script and copying them into the necessary partitions _for usb_, as it was originally written. You can instead copy onto the created full OS partitions immediately.
+```
+The following step has worked for my install, meaning it is the safe way to go. The following step is essentially building the images from script and copying them into the necessary partitions _for usb_, as it was originally written. You can instead copy onto the created full OS partitions immediately.
 
-    * You can also instead opt to copy the files (once LUKS encrypted) from your side install onto the one you want to use, though I am not sure of the consequences and don't want to be testing it out right now. It should work, but with tweaks, at least considering partition differences. Again, I still think that building the base image (properly configured) is safer.
+You can also instead opt to copy the files (once LUKS encrypted) from your side install onto the one you want to use, though I am not sure of the consequences and don't want to be testing it out right now. It should work, but with tweaks, at least considering partition differences. Again, I still think that building the base image (properly configured) is safer.
+```
 
 4. Move to desktop **or some work folder** and `git clone https://github.com/AsahiLinux/asahi-alarm-builder.git`
     - check the scripts out and read out what they do so you know your initial minimal image config, it is short
@@ -103,13 +105,13 @@ So 2 explanations going forward on topic of which files to use to actually creat
     - the same folder should have an efi directory, if not, make one
     - now, you should configure fstab to mount your apple device ESP/EFI partition onto /boot/efi, making /boot/efi/m1n1 available, configure this in your fstab
 
-\
+```
+THE BELOW, is probably the most important thing for which you came for. Most of it is now CROSSED out. Because it is simply part of the following repository -> https://github.com/b-crumb/asahi-scripts and https://github.com/b-crumb/PKGBUILDs.asahi-scripts and https://github.com/b-crumb/asahi-infra. This is how I am CURRENTLY building my distro, which enables me to use LUKS, this is because the former method of only using systemd is **BROKEN**.
 
-    * THE BELOW, is probably the most important thing for which you came for. Most of it is now CROSSED out. Because it is simply part of the following repository -> https://github.com/b-crumb/asahi-scripts and https://github.com/b-crumb/PKGBUILDs.asahi-scripts and https://github.com/b-crumb/asahi-infra. This is how I am CURRENTLY building my distro, which enables me to use LUKS, this is because the former method of only using systemd is **BROKEN**.
+The thing you have to essentially do is install MY PKGBUILD by cloning the PKGBUILDs.asahi-scripts repository and also probably take a look at the README in MY (b-crumbs) asahi-scripts repo which does contain some unnecessary information which is handled by the PKGBUILD but, also contains others which are REQUIRED.
 
-    * The thing you have to essentially do is install MY PKGBUILD by cloning the PKGBUILDs.asahi-scripts repository and also probably take a look at the README in MY (b-crumbs) asahi-scripts repo which does contain some unnecessary information which is handled by the PKGBUILD but, also contains others which are REQUIRED.
-
-    * Meaning, everything missing is added auto, everything not missing is updated.
+Meaning, everything missing is added auto, everything not missing is updated.
+```
 
 #### hooks (in /etc/mkinitcpio.conf)
 `HOOKS=(base systemd sd-asahi autodetect keyboard sd-vconsole modconf block sd-encrypt filesystems fsck)`
